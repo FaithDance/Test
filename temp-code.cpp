@@ -1,36 +1,54 @@
 #include <stdio.h>
+#include <string.h>
+
+int len, ze, i = 1;
+char s[10];
+
+char Trs(char a) {
+  return a - '0' + 'a';
+}
 
 int main() {
-  char op = ',', ch;
-  int num = 0, a = 0;
-  for (; ch != '=';) {
-    ch = getchar();
-    if (ch < '0' || ch > '9') {
-      if (op == ',') {
-        a = num;
-      } else if (op == '+') {
-        a = a + num;
-      } else if (op == '-') {
-        a = a - num;
-      } else if (op == '*') {
-        a = a * num;
-      } else if (op == '/') {
-        if (num == 0) {
-          printf("ERROR\n");
-          return 0;
-        }
-        a = a / num;
-      } else {
-        printf("ERROR\n");
-        return 0;
-      }
-      num = 0;
-      op = ch;
+  scanf("%s", s + 1);
+  len = strlen(s + 1);
+  if (len == 1 && s[1] == '0') {
+    printf("a\n");
+    return 0;
+  }
+  if (len == 2 && s[1] == '1') {
+    printf("S");
+    if (s[2] != '0') {
+      printf("%c", Trs(s[2]));
+    }
+    printf("\n");
+    return 0;
+  }
+  if (len == 9) {
+    printf("%cY", Trs(s[1]));
+    i = 2;
+  }
+  for (int k; i <= len; ++i) {
+    if (s[i] == '0') {
+      ++ze;
     } else {
-      num = num * 10 + ch - '0';
+      if (ze) {
+        printf("a");
+        ze = 0;
+      }
+      printf("%c", Trs(s[i]));
+      k = (len - i) % 4 + 1;
+      if (k == 2) {
+        printf("S");
+      } else if (k == 3) {
+        printf("B");
+      } else if (k == 4) {
+        printf("Q");
+      }
+    }
+    if (len - i == 4) {
+      printf("W");
     }
   }
-  printf("%d\n", a);
-  
+  printf("\n");
   return 0;
 }
