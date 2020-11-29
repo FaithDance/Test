@@ -68,13 +68,13 @@ h3 {
   justify-content: space-between;
   font-size: 20px;
   margin-bottom: 10px;
-  font-family: Conolas;
+  font-family: Consolas;
 }
 
 .average {
   font-size: 23px;
   font-style: italic;
-  font-family: Conolas;
+  font-family: Consolas;
   color: orangered;
   text-align: center;
 }
